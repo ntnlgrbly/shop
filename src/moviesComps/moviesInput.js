@@ -28,10 +28,10 @@ export const MoviesInput = (props) => {
 
                             <option value="Title">name</option>
                             <option value="Year">year</option>
-                            <option value="Year">Year : 2021</option>
-                            <option value="Year">Year : 2020</option>
-                            <option value="Year">year : 2019</option>
-                            <option value="Year">year : 2018</option>
+                            <option value="2017">Year : 2017</option>
+                            <option value="2018">Year : 2018</option>
+                            <option value="2019">year : 2019</option>
+                            <option value="2020">year : 2020</option>
                             <option value="2021">4324  </option>
 
 
