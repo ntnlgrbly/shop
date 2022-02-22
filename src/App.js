@@ -1,11 +1,13 @@
+
 import './App.css';
 import {AppMovies} from './moviesComps/appMovies';
 
-function App() {
+const App=()=> {
 
   return (
     <div className="App">
      <AppMovies/>
+  
     </div>
   );
 }

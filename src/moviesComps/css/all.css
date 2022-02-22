@@ -1,9 +1,9 @@
 body{
-  background: rgb(243, 243, 233);
+  background: rgb(252, 248, 248);
 }
 .pic_bg {
-    min-height: 640px;
-    background:rgb(241, 2, 2);
+    min-height: 60;
+    /* background:rgb(241, 2, 2); */
     background-size: cover;
     background-position:center center;
   

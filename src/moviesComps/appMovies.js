@@ -8,6 +8,8 @@ import { MoviesInput } from "./moviesInput";
 import { StripHome } from "./stripHome";
 import { MoviesList } from "./moviesList";
 import { MovieVideo } from "./movieVideo";
+import Footer from "./footer";
+
 
 export const AppMovies = () => {
   // default is Moives bank
@@ -77,6 +79,8 @@ export const AppMovies = () => {
             <div>
               <StripHome />
               <MoviesList movies_ar={ar} />
+              <Footer/>
+      
             </div>
           )}
         />

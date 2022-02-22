@@ -20,7 +20,7 @@ export const MovieVideo = (props) => {
    <div className="container">
     <div className=" col-lg-6 shadow p-3 mx-auto over-flow-hidden">
     <img className="pic_bg" src={item.Poster}/>
-    <h2>Title {item.Title}</h2>
+    <h2>Name :{item.Title}</h2>
    <div>Score :{item.imdbRating}.</div>
    <div>Votes count :{item.imdbVotes}</div>
    <div>Genre : {item.Genre}.</div> 
