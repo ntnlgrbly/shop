@@ -1,10 +1,19 @@
 import axios from "axios";
 
 import { Link } from "react-router-dom";
+import {useEffect} from "react";
 import "./css/all.css";
 
 
 export const MoviesList = (props) => {
+
+    useEffect(()=>{
+        let searchQ = props.match.params.search;
+        console.log("search : " + searchQ);
+        props.doSearchApi2(searchQ);
+
+    //doSearchApi2
+    },[]);
   return (
     <div className="container">
       <h2> Movies:</h2>

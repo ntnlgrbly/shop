@@ -42,14 +42,28 @@ export const AppMovies = () => {
     setAr(temp_ar)
   }
 
+
+
+    const doSearchApi2 = async (searchQuery) => {
+        let url = `http://www.omdbapi.com/?s=${searchQuery}&apikey=e7c61f3b`
+        // let resp = await fetch(url);
+        // let data = await resp.json();
+        let resp = await axios.get(url);
+        console.log("axios",resp);
+        let temp_ar = sortBy(resp.data.Search, sortSelect);
+        setAr(temp_ar)
+    }
+
   return (
     <Router>
       <MoviesInput sortMovies={sortMovies} setSearch={setSearch} />
       <Switch>
-        <Route exact path="/" render={() =>
-          <div>
+        <Route exact path={["/:search", "/"]} render={(data) =>
+            // <Route exact path="/" render={(data) =>
+
+                <div>
             <StripHome />
-            <MoviesList movies_ar={ar} />
+            <MoviesList movies_ar={ar} doSearchApi2 = {doSearchApi2} {...data}/>
           </div>
         } />
        <Route exact path="/Video/:id" component={MovieVideo}/>
