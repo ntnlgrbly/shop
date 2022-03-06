@@ -32,7 +32,7 @@ export const MoviesInput = (props) => {
                             <option value="2018">Year : 2018</option>
                             <option value="2019">year : 2019</option>
                             <option value="2020">year : 2020</option>
-                            <option value="2021">4324  </option>
+                            <option value="2021">Year : 2021  </option>
 
 
                         </select>
