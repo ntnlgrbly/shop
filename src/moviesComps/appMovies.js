@@ -13,7 +13,7 @@ import Footer from "./footer";
 
 export const AppMovies = () => {
     // default is Moives bank
-    // let [search, setSearch] = useState("bank")
+    let [search, setSearch] = useState("bank")
     let [ar, setAr] = useState([])
     let [sortSelect, setSortSelect] = useState("Title");
     //
@@ -60,7 +60,7 @@ export const AppMovies = () => {
 
     return (
         <Router>
-            <MoviesInput sortMovies={sortMovies}  />
+            <MoviesInput sortMovies={sortMovies}   setSearch={setSearch}  />
             <Switch>
                 <Route exact path={["/:search", "/"]} render={(data) =>
                     // <Route exact path="/" render={(data) =>
@@ -74,7 +74,7 @@ export const AppMovies = () => {
                 <Route exact path="/Video/:id" component={MovieVideo}/>
 
             </Switch>
-
+        <Footer/>
         </Router>
     )
 }
