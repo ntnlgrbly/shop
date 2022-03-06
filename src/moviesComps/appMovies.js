@@ -10,35 +10,34 @@ import { MoviesList } from "./moviesList";
 import { MovieVideo } from "./movieVideo";
 import Footer from "./footer";
 
-
 export const AppMovies = () => {
   // default is Moives bank
-  let [search, setSearch] = useState("bank");
+  // let [search, setSearch] = useState("bank");
   let [ar, setAr] = useState([]);
   let [sortSelect, setSortSelect] = useState("Title");
 
-  useEffect(() => {
-    doSearchApi();
-  }, [search]);
+  // useEffect(() => {
+  //   doSearchApi();
+  // }, [search]);
   //NatanE
-  const sortMovies =async (_sort) => {
+  const sortMovies = async (_sort) => {
     // https://www.geeksforgeeks.org/lodash-_-sortby-method/
     console.log("_sort = ", _sort);
     //TODO -more conditions for years
     let temp_ar = null;
     //if .... Title || Year? - do this
     if (_sort == "Title" || _sort == "Year") {
-    //   console.log("if work");
+      //   console.log("if work");
       temp_ar = sortBy(ar, _sort);
     } else {
-    //   console.log("else work");
-        let url = `https://www.omdbapi.com/?s=bank&y=${_sort}&apikey=e7c61f3b`;
+      //   console.log("else work");
+      let url = `https://www.omdbapi.com/?s=bank&y=${_sort}&apikey=e7c61f3b`;
       // let resp = await fetch(url);
       // let data = await resp.json();
       let resp = await axios.get(url);
       console.log("axios", resp);
-    //   temp_ar = sortBy(resp.data.Search, _sort);
-    temp_ar = resp.data.Search;
+      //   temp_ar = sortBy(resp.data.Search, _sort);
+      temp_ar = resp.data.Search;
     }
 
     //else - specific year...
@@ -58,8 +57,8 @@ export const AppMovies = () => {
   };
   //  axios.get("https://www.omdbapi.com/?s=bank&y=2020&apikey=e7c61f3b")
 
-  const doSearchApi = async () => {
-    let url = `http://www.omdbapi.com/?s=${search}&apikey=e7c61f3b`;
+  const doSearchApi2 = async (searchQuery) => {
+    let url = `http://www.omdbapi.com/?s=${searchQuery}&apikey=e7c61f3b`;
     // let resp = await fetch(url);
     // let data = await resp.json();
     let resp = await axios.get(url);
@@ -70,17 +69,21 @@ export const AppMovies = () => {
 
   return (
     <Router>
-      <MoviesInput sortMovies={sortMovies} setSearch={setSearch} />
+      <MoviesInput sortMovies={sortMovies} />
       <Switch>
         <Route
           exact
-          path="/"
-          render={() => (
+          path={["/:search", "/"]}
+          render={(data) => (
+            // <Route exact path="/" render={(data) =>
+
             <div>
               <StripHome />
-              <MoviesList movies_ar={ar} />
-              <Footer/>
-      
+              <MoviesList
+                movies_ar={ar}
+                doSearchApi2={doSearchApi2}
+                {...data}
+              />
             </div>
           )}
         />
